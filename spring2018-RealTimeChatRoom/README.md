@@ -1,12 +1,5 @@
 # README #
 
-### Group memebers ###
-Xin Qiu(458829)  
-Hao Sun(458716)  
-
-### Home Link ###
-http://ec2-34-226-139-203.compute-1.amazonaws.com:3456/client.html
-
 ### Notes ###
 The left area shows the list of chat rooms, the middle area shows messages in this chat room and the list of users in current chat room,
 and the right area shows privates message which are sent by the other users to the current user. When the current user is the 

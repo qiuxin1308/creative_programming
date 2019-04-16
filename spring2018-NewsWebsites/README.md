@@ -1,12 +1,5 @@
 # README #
 
-### HomePage link ###
-http://ec2-34-226-139-203.compute-1.amazonaws.com/~qiuxin/module3/LoginPage.php
-
-### Group members ###
-Xin Qiu(458819)
-Hao Sun(458716)
-
 ### Username and password ###
 123,123  
 Alice,Alice  

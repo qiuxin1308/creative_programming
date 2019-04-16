@@ -1,12 +1,5 @@
 # Read Me #
 
-### The page of calendar ###
-http://ec2-34-226-139-203.compute-1.amazonaws.com/~qiuxin/module5/group/calendar_mainPage.html
-
-### Group Member ###
-Xin Qiu(458829)  
-Hao Sun(458716)
-
 ### username, password you can use ###
 111,111  
 Alice,Alice
