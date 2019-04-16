@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creating a new account here</title>
+	<link rel="stylesheet" type="text/css" href="theStyle.css">
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<h1>Create Account</h1>
+		</div>
+		<div id="main">
+			<form name="input" action="createNewUser.php" method="POST">
+				<div>
+					<label>Username:</label><br>
+					<input type="text" name="username">
+				</div>
+				<div>
+					<br><label>Password:</label><br>
+					<input type="password" name="password">
+				</div>
+				<br><input type="submit" name="submit" value="Create Account">
+				<input type="button" name="goBack" onclick="history.go(-1)" value="Back">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

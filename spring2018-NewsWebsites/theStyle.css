@@ -1,0 +1,186 @@
+body{
+	background:#666;
+	color:#fff;
+	font-family: arial;
+	line-height: 1.25em;
+}
+#container{
+	background: #333;
+	width:800px;
+	margin:30px auto;
+	overflow: hidden;
+	padding:20px;
+}
+#main{
+	float: left;
+	width: 55%;
+}
+#nav{
+	height: 40px;
+	background: #666;
+}
+
+#nav ul{
+	padding-top:13px;
+	padding-left: 10px;
+}
+
+#nav li{
+	list-style: none;
+	float:left;
+	padding-right: 20px;
+}
+
+#nav .active{
+	font-weight: bold;
+	color: #000;
+}
+.news li{
+	border-bottom: 2px #666 dashed;
+	padding-bottom: 20px;
+}
+#authorType{
+	font-style: normal;
+	font-family: "Times New Roman";
+}
+#sidebarTitle{
+	font-style: normal;
+	font-family: "Times New Roman";
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+}
+
+ul{
+	padding:0;
+}
+#sidebar{
+	text-align: center;
+	background:#666;
+	float:right;
+	width:30%;
+	margin-top:20px;
+	margin-left: 20px;
+	padding:10px;
+	overflow:hidden;
+}
+#editType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 13px;
+	padding-left: 13px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+#deleteType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 6px;
+	padding-left: 8px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 15px;
+	line-height: 1.25em;
+}
+#deleteCommentType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 7px;
+	padding-left: 8px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 15px;
+	line-height: 1.25em;
+}
+#postCommentType{
+	background-color: #666;
+	color:#fff;
+	font-weight: bold;
+	padding-right: 11px;
+	padding-left: 11px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+#aType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 13px;
+	padding-left: 13px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+#commentType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 7px;
+	padding-left: 8px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 15px;
+	line-height: 1.25em;
+}
+#logoutType{
+	background-color: #333;
+	color:#fff;
+	padding-right: 13px;
+	padding-left: 13px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+#backType{
+	background-color: #333;
+	color:#fff;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 16px;
+	line-height: 1.25em;
+}
+#searchBackType{
+	background-color: #666;
+	color:#fff;
+	padding-right: 7px;
+	padding-left: 8px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	text-decoration: none;
+	border: 0;
+	font-family: arial;
+	font-size: 15px;
+	line-height: 1.25em;
+}

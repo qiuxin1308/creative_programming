@@ -1,0 +1,356 @@
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.month .prev {
+    padding-top: 10px;
+    float: left;
+}
+
+.month .next {
+    padding-top: 10px;
+    float: right;
+}
+
+.month {
+	text-align: center;
+    padding: 50px 40px;
+    background: #2EA9DF;
+}
+
+.month ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.month ul li {
+	text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#weekdays {
+	padding: 10px 0;
+    margin: 0px;
+    background-color:#005caf;
+}
+
+#weekdays li {
+    text-align: center;
+    display: inline-block;
+    width: 14.28%;
+    color: white;
+}
+
+#days {
+    margin: 0px;
+    padding: 10px 0;
+    background: #70c4e9;
+}
+
+#days li {
+	text-align: center;
+	color: white;
+	width: 14.28%;
+    height: 40px;
+    list-style-type: none;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size:12px;
+}
+
+#notThisMonth{
+	color: #70c4e9 !important;
+}
+
+#active {
+    background: #2EA9DF;
+    border-radius: 50%;
+    color: white;
+    padding: 5px;
+}
+.buttonsStyle {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+}
+.buttonsStyle button {
+	font-size: 15px;
+    border-radius: 7px;
+    background: #2EA9DF;
+    color: white;
+    padding: 5px;
+    border:0;
+}
+
+#submit_Register, #submit_CheckValid {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    font-size: 15px;
+}
+#submit_Login, #submit_Forgot {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    font-size: 15px;
+}
+#submit_AddEvent {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    font-size: 15px;
+}
+#submit_EditEvents, #submit_share, #submit_shareCalendar{
+    background: #2EA9DF;
+    color: white;
+    border-radius: 7px;
+    padding: 5px;
+    border:0;
+    font-size: 15px;
+}
+#delete_EditEvents {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    font-size: 15px;
+    margin-left: 10px;
+}
+#close_Register, #close_CheckValid {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#close_Login, #close_share, #close_shareCalendar {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#close_AddEvent {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#close_displayEvent {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    left: 45%;
+    bottom:5%;
+    text-align: center;
+}
+#close_EditEvents {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+}
+#edit_displayEvent {
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    left: 10%;
+    font-size: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+#share_displayEvent{
+    background: #2EA9DF;
+    border-radius: 7px;
+    color: white;
+    padding: 5px;
+    border:0;
+    margin-left: 5px;
+    font-size: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+#registerForm {
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 400px;
+    height: 300px;
+    right: 30%;
+    top: 30%;
+    left: 30%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 35px;
+    padding-left: 10px;
+    color: white;
+}
+#loginForm{
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 300px;
+    height: 200px;
+    right: 30%;
+    top: 40%;
+    left: 35%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 65px;
+    padding-left: 10px;
+    color: white;
+}
+#checkValidForm {
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 300px;
+    height: 400px;
+    right: 30%;
+    top: 40%;
+    left: 35%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 65px;
+    padding-left: 10px;
+    color: white;
+}
+#shareEventForm, #shareCalendarForm {
+    /*display: none;*/
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 300px;
+    height: 150px;
+    right: 30%;
+    top: 40%;
+    left: 35%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 65px;
+    padding-left: 10px;
+    color: white;
+}
+
+#addEventForm {
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 400px;
+    height: 500px;
+    right: 30%;
+    top: 30%;
+    left: 30%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 35px;
+    padding-left: 10px;
+    color: white;
+}
+#displayEventsForm {
+    border-radius: 25px;
+    position: absolute;
+    font-size: 10px;
+    width: 400px;
+    min-height: 700px;
+    right: 30%;
+    top: 30%;
+    left: 30%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 35px;
+    padding-left: 10px;
+    color: white;
+}
+#editEventForm {
+    border-radius: 25px;
+    position: absolute;
+    font-size: 15px;
+    width: 400px;
+    height: 400px;
+    right: 30%;
+    top: 30%;
+    left: 30%;
+    bottom: 30%;
+    background: #005CAF;
+    text-align: center;
+    padding-top: 35px;
+    padding-left: 10px;
+    color: white;
+}
+#showCurrentYear {
+    font-size: 18px;
+}
+#displayUsername {
+    font-size: 10px;
+}
+#days button {
+    background: #e99570;
+    border:0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    /*color: #FBE251;*/
+    border-radius: 10px;
+}
+
+.display_eventsEmergency {
+    background: #CB1B45 !important;
+    border:0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    border-radius: 10px;
+}

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Amazing Chat Room</title>
+      <meta charset="utf-8">
+      <style type="text/css">
+         #sendMessage, #createUser_btn, #createRoom_btn, #createRoom_function_btn, 
+         #close_createRoom_btn, #kickPeople_btn, #banPeople_btn, #unblockPeople_btn,
+         #banMessage_btn{
+         -webkit-transition-duration: 0.4s;
+         transition-duration: 0.4s;
+         background-color: white;
+         color: black;
+         border: 3px solid #4CAF50;
+         padding: 10px 20px;
+         font-size: 18px;
+         position: relative;
+         /*display: inline-block;*/
+      }
+
+      #banPeople_btn{
+         margin-left: 15px;
+      }
+
+      #unblockPeople_btn {
+         margin-left: 15px;
+      }
+
+      #sendMessage:hover, #createUser_btn:hover, #createRoom_btn:hover, #createRoom_function_btn:hover, 
+      #close_createRoom_btn:hover, #kickPeople_btn:hover, #banPeople_btn:hover, #unblockPeople_btn:hover,
+      #banMessage_btn:hover{
+         background-color: green; /* green */
+         color: white;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+      /*main div, includes: show all chatrooms div, chatlog div and my chatroom div*/
+      #main{
+         width: 1200px;
+         height: 700px;
+         margin:  30px auto;
+         border: 5px #ffffff solid;
+         /*margin-top: 120px;*/
+      }
+
+      /*create user div*/
+      #createUser{
+      /*display: none;*/
+         position: fixed;
+         top:15%;
+         left:35%;
+         right:35%;
+         font-size: 20px;
+         width: 400px;
+         height: 250px;
+         margin: auto;
+         /*margin-top: 10%;*/
+         background: #2bb0f8;      /*green*/
+         text-align: center;
+         padding: 35px;
+         color: white;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+         opacity: 0.8;
+         /*position: absolute;*/
+      }
+
+      #createRoom{
+         display: none;
+         position: fixed;
+         top:15%;
+         left:35%;
+         right:35%;
+         font-size: 20px;
+         width: 400px;
+         height: 430px;
+         margin: auto;
+         /*margin-top: 10%;*/
+         background: #2bb0f8;      /*green*/
+         text-align: center;
+         padding: 35px;
+         color: white;
+         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+         opacity: 0.8;
+         /*position: absolute;*/
+      }
+
+      /*username input*/
+      #username, #message_input, #roomname, #password{
+         width: 50%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         display: inline-block;
+         border: 1px solid #ccc;
+         box-sizing: border-box;
+         font-size: 18px;
+      }
+
+      #message_input{
+         width: 70%;
+         margin-left: 5%;
+      }
+
+      /*div left*/
+      #left_div{
+         float: left;
+         margin: auto;
+         width: 20%;
+         height: 80%;
+         margin-top: 2%;
+         margin-left: 2%;
+         border: 3px #ffffff solid;
+      }
+
+      #chatrooms_all_head, #chatrooms_my_head{
+      /*position: absolute;*/
+         color: #fff;
+         text-align: center;
+         font-size: 14px;
+         margin-top: 3px;
+         margin-bottom: 3px;
+      /*font-style: */
+      }
+
+      #chatrooms_all{
+         width: 95%;
+         height: 92.5%;
+         margin-top: 5%;
+         margin-left: 2.5%;
+         margin-right: 2.5%;
+         background-color: white;
+         border-style: solid;
+         border-width: 1px;
+         border-color: black;
+         opacity: 0.7;
+         overflow: auto;
+         /*padding-top: 5%;*/
+         font-size: 16px;
+      }
+      #chatrooms_all p {
+         text-align: center;
+      }
+
+
+      /*div center*/
+      #chatlog{
+         float: left;
+         width: 50%;
+         height: 80%;
+         margin-top: 2%;
+         margin-left: 2%;
+         border: 3px #ffffff solid;
+
+      }
+
+      #message_area_and_users{
+         height: 85%;
+      }
+
+
+      #message_area{
+         color: black;
+         font-size: 16px;
+         background-color: white;
+         border-style: solid;
+         border-width: 1px;
+         border-color: black;
+         opacity: 0.7;
+         height: 100%;
+         width: 75%;
+         float: left;
+         margin-top: 5%;
+         overflow: auto;
+      }
+
+      #users_area{
+         color: black;
+         font-size: 16px;
+         background-color: white;
+         border-style: solid;
+         border-width: 1px;
+         border-color: black;
+         opacity: 0.7;
+         height: 100%;
+         width: 23%;
+         float: right;
+         margin-top: 5%;
+         overflow: auto;
+      }
+
+      #users_area p {
+         text-align: center;
+      }
+
+      #message_send{
+         height: 10%;
+         width: 90%;
+         margin: auto;
+      }
+
+      /*div right*/
+      #right_div{
+         float: right;
+         margin: auto;
+         width: 20%;
+         height: 80%;
+         margin-top: 2%;
+         margin-right: 2%;
+         border: 3px #ffffff solid;
+      }
+
+/*show my chatrooms (chatrooms I create)*/
+      #chatrooms_my{
+         width: 95%;
+         height: 92.5%;
+         margin-top: 5%;
+         margin-left: 2.5%;
+         margin-right: 2.5%;
+         background-color: white; /*blue*/
+         border-style: solid;
+         border-width: 1px;
+         border-color: black;
+         opacity: 0.7;
+         overflow: auto;
+         /*padding-top: 5%;*/
+         font-size: 16px;
+      }
+
+      #functional_btns{
+         width:95%;
+         height: 10%;
+         margin-top: 2%;
+         margin-left: 2.5%;
+         float: left;
+         /*height:;*/
+      }
+      </style>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+      <script type ="text/javascript">
+
+      var current_user = "";  //store the username of current user
+      var create_user_success = false;
+      var canSend = false;
+      var roomLists = {};
+      var ownerLists = {};
+      var allRooms = [];
+      var bannedLists = {};
+      var blockMsg = [];
+      //var unblockLists = {};
+      // create connection using socket
+      var socketio = io.connect();
+
+      //listen "message_to_client"
+      socketio.on("message_to_client",function(data) {  //receive message from the server
+         //Append an HR thematic break and the escaped HTML of the new message
+         document.getElementById("message_area").appendChild(document.createTextNode(data['message']));
+         document.getElementById("message_area").appendChild(document.createElement("hr"));
+      });
+
+      socketio.on("create_user_to_client", function(data){
+         //do something based on "success"
+         create_user_success = data['success'];
+         var tempUser = "";
+         if(create_user_success){
+            canSend = true;
+            // display users
+            for (i in data["allusers"]) {
+               if (data["allusers"][i] == data["curRoom"]) {
+                  tempUser += '<p><a href="#" onclick="sendPrivateMsg(\''+i+'\')">'+i+'</a></p>';
+               }
+            }
+            $("#users_area").empty();
+            var pTag = '<p>Users in '+data["curRoom"]+':</p>';
+            $("#users_area").append(pTag, tempUser);
+            
+         }else{
+            if(!canSend && current_user + "0#$%&*" == data['username']){
+               current_user = "";
+               alert("Username exists, try another");
+               document.getElementById("createUser").style.display = "initial"; //pop up createUser div again
+            }
+         }
+      });
+
+      socketio.on("display_room_to_client", function(data){
+         allRooms = data["chatrooms"];
+         var tempRoom = "";
+         for (i in allRooms) {
+            tempRoom += '<p><a href="#" onclick="enterChatRoom(\''+allRooms[i]+'\')">'+allRooms[i]+'</p>';
+         }
+         $("#chatrooms_all").empty();
+         var pTag = '<p>All Chat Rooms:</p>';
+         $("#chatrooms_all").append(pTag,tempRoom);
+      });
+
+      //display private message
+      socketio.on("displayPrivateMsg_client", function(data){
+         var receiver = data["receiver"];
+         var sender = data["sender"];
+         var privateMsg = data["privateMsg"];
+         if (current_user == receiver) {
+            if (blockMsg.indexOf(sender) == -1) {
+               var textTag = '<p>Message from '+sender+': '+privateMsg+'</p>';
+               $("#chatrooms_my").append(textTag);
+            }
+         }
+      });
+
+      //if user left the room
+      socketio.on("leftChatRoom_client", function(data){
+         var userName = data["curUser"];
+         document.getElementById("message_area").appendChild(document.createElement("p"));
+         document.getElementById("message_area").appendChild(document.createTextNode(userName+" left the chat room."));
+         document.getElementById("message_area").appendChild(document.createElement("br"));
+      });
+
+      //if password is wrong
+      socketio.on("wrongPwd_client", function(data){
+         alert("Password is wrong.");
+      });
+
+      //kick or ban people if curUser is the owner
+      socketio.on("kickBanPeople_client",function(data){
+         if (data["isOwner"]) {
+            var kickBanTag = '<button id="kickPeople_btn" onclick="kickPeople_byOwner(\''+data['roomName']+'\')">Kick</button>';
+            kickBanTag += '<button id="banPeople_btn" onclick="banPeople_byOwner(\''+data['roomName']+'\')">Ban</button>';
+            kickBanTag += '<button id="unblockPeople_btn" onclick="unblockedPeople(\''+data['roomName']+'\')">Unblock</button>';
+            $("#kickBanPeopleFun").empty();
+            $("#kickBanPeopleFun").append(kickBanTag);
+         }else{
+            $("#kickBanPeopleFun").empty();
+         }
+      });
+
+      //if the people is kicked
+      socketio.on("kickedSuccess", function(data){
+         alert("You have successfully kicked "+data["kickedPeople"]+" out.");
+      });
+
+      //if the kicked people is not in the room
+      socketio.on("kickedFailed", function(data){
+         alert(data["kickedPeople"] + " is not in this chat room.");
+      });
+
+      //the person who got kicked
+      socketio.on("getKickedPeople_client", function(data){
+         if (current_user == data["kickedPeople"]) {
+            socketio.emit("peopleWhoGetKicked", {kickedPeople: data["kickedPeople"], roomName: data["roomName"]});
+         }
+      });
+
+      //let the other people in the chat room knew who got kicked
+      socketio.on("leftKickedRoom_client", function(data){
+         var kickedUserName = data["kickedPeople"];
+         document.getElementById("message_area").appendChild(document.createElement("p"));
+         document.getElementById("message_area").appendChild(document.createTextNode(kickedUserName+" is kicked by the owner."));
+         document.getElementById("message_area").appendChild(document.createElement("br"));
+      });
+
+      //if the people is banned
+      socketio.on("bannedSuccess", function(data){
+         alert("You have successfully banned "+data["bannedPeople"]+".");
+      });
+
+      //if the people is not in the room
+      socketio.on("bannedFailed", function(data){
+         alert(data["bannedPeople"] + " is not in this chat room.");
+      });
+
+      //the person who got banned
+      socketio.on("getBannedPeople_client", function(data){
+         if (current_user == data["bannedPeople"]) {
+            bannedLists[data["roomName"]] = data["bannedPeople"];
+            //delete unblockLists[data["roomName"]];
+            socketio.emit("peopleWhoGetBanned", {bannedPeople: data["bannedPeople"], roomName: data["roomName"]});
+         }
+      });
+
+      //let other people knew who got banned
+      socketio.on("leftBannedRoom_client", function(data){
+         var bannedUserName = data["bannedPeople"];
+         document.getElementById("message_area").appendChild(document.createElement("p"));
+         document.getElementById("message_area").appendChild(document.createTextNode(bannedUserName+" is banned by the owner."));
+         document.getElementById("message_area").appendChild(document.createElement("br"));
+      });
+
+      //can ban a person's message
+      socketio.on("canBanMessage_client", function(data){
+         var banUser = data["banUser"];
+         if (data["canBan"]) {
+            blockMsg.push(banUser);
+            alert("You will not receive message from "+banUser+".");
+         }else{
+            alert("The user does not exist.");
+         }
+      });
+
+      //unblock the person
+      socketio.on("getUnblockedPeople_client", function(data){
+         if (data["canUnblock"]) {
+            console.log(data["unblockPeople"] == bannedLists[data["roomName"]]);
+            if (current_user == data["unblockPeople"]) {
+               //unblockLists[data["roomName"]] = data["unblockPeople"];
+               delete bannedLists[data["roomName"]];
+            }
+         }
+      });
+
+      //unblock people successfully
+      socketio.on("unblockSuccess", function(data){
+         alert("You successfully unblocked "+data["unblockPeople"]);
+      });
+
+      //fail to unblock people
+      socketio.on("unblockFail", function(data){
+         alert("Fail to unblock.");
+      });
+
+      function sendMessage(){
+         if(canSend){
+            var msg = current_user + ": ";
+            if(document.getElementById("message_input").value == ""){
+                alert("message cannot be empty");
+            }else{
+               msg += document.getElementById("message_input").value;
+               document.getElementById("message_input").value = "";  //clear the message field
+               socketio.emit("message_to_server", {message:msg});
+            }
+         }else{
+            document.getElementById("message_input").value = "";
+            if(current_user == ""){
+               alert("Please create a user first");  
+            }
+         }
+      }
+
+      function createUser(){
+         //user name cannot be empty
+         if(document.getElementById("username").value == ""){
+            alert("Username cannot be empty"); 
+         }else{
+            //1. get username from text input
+            var username = document.getElementById("username").value;
+            current_user = username;
+            document.getElementById("username").value = "";
+            document.getElementById("createUser").style.display = "none";
+            //2. send to server
+            socketio.emit("create_user_to_server", {username: username});
+         }
+      }
+
+      //Open and Close create room div
+      function openCreateRoom(){
+         if(current_user != ""){
+            document.getElementById("createRoom").style.display = "initial";
+         }else{
+            alert("Please type in your username first");
+         }    
+      }
+
+      function close_createRoom(){
+         document.getElementById("createRoom").style.display = "none";
+         document.getElementById("roomname").value = "";
+         document.getElementById("password").value = "";
+      }
+
+      //create a chat room and emit the information to server, and server will send back whether it is successful or not
+      function createRoom(){
+         var roomname = document.getElementById("roomname").value;
+         var password = document.getElementById("password").value;
+         var owner = current_user;
+         if (password != null || password != "") {
+            roomLists[roomname] = password;
+            ownerLists[roomname] = owner;
+            allRooms.push(roomname);
+            socketio.emit("create_room_to_server", {roomname:roomname, password:password, owner: owner});
+            document.getElementById("createRoom").style.display = "none";
+            document.getElementById("roomname").value = "";
+            document.getElementById("password").value = "";
+         }else{
+            alert("password cannot be empty");
+         }
+      }
+
+      //send private message
+      function sendPrivateMsg(theUserName){
+         var senderName = current_user;
+         var privateMsg = prompt("To:"+theUserName+". Enter message:");
+         if (privateMsg != null) {
+            socketio.emit("sendPrivateMessage_server",{theUserName:theUserName, senderName:senderName, privateMsg:privateMsg});
+         }else{
+            alert("Message cannot be empty");
+         }
+      }
+
+      //enter the chat room
+      function enterChatRoom(roomName){
+         var roomName = roomName;
+         var curUserName = current_user;
+         if (curUserName != bannedLists[roomName]) {
+            var matchPwd = prompt("Enter the room password, if it doesn't have password, leave it blank.");
+            socketio.emit("enterRoom_server",{roomName:roomName, matchPwd: matchPwd});
+            //whether curUser is the owner
+            socketio.emit("kickBanPeopleIsOwner_server",{curUserName:curUserName});
+         }else{
+            alert("You are banned from this chat room.");
+         }
+      }
+
+      //kick people in the chat room
+      function kickPeople_byOwner(theRoomName){
+         var curRoom = theRoomName;
+         var kickedPeople = prompt("Enter the username: ");
+         if (kickedPeople != ownerLists[curRoom]) {
+            socketio.emit("kickPeopleByOwner_server",{kickedPeople: kickedPeople, curRoom: curRoom});
+         }else{
+            alert("You cannot kick yourself.");
+         }
+      }
+
+      //ban people in the chat room
+      function banPeople_byOwner(theRoomName){
+         var curRoom = theRoomName;
+         var bannedPeople = prompt("Enter the username: ");
+         if (bannedPeople != ownerLists[curRoom]) {
+            socketio.emit("banPeopleByOwner_server",{bannedPeople: bannedPeople, curRoom: curRoom});
+         }else{
+            alert("You cannot ban yourself.");
+         }
+      }
+
+      //the person who will be unblocked
+      function unblockedPeople(theRoomName){
+         var unblockedUser = prompt("Enter the user you want to unblock:");
+         var roomName = theRoomName;
+         if (unblockedUser != ownerLists[roomName]) {
+            socketio.emit("unblockPeopleByOwner_server", {unblockedUser: unblockedUser, roomName: roomName});
+         }else{
+            alert("You cannot unblock yourself.");
+         }
+      }
+
+      //ban message from a person
+      function banMsg(){
+         var banUser = prompt("Enter the username: ");
+         if(banUser == current_user || banUser == null){
+            alert("Please enter valid username except yourself.");
+         }else{
+            socketio.emit("banMessage_server",{banUser: banUser});
+         }
+      }
+
+      </script>
+   </head>
+
+   <body>
+      <div id="main">
+         <!-- show all chatrooms, scrollable div-->
+         <div id="left_div">
+            <div id="chatrooms_all"></div>
+         </div>
+
+         <!-- scrollable div -->
+         <div id="chatlog">
+            <div id="message_area_and_users">
+               <!-- message area -->
+               <div id="message_area"></div>
+
+               <!-- current users in this room -->
+               <div id="users_area">
+               </div>
+
+            </div>
+
+            <!-- message text field and send message button -->
+            <div id="message_send">
+               <input type="text" id="message_input"/>
+               <button id="sendMessage" onclick="sendMessage()">Send!</button>
+            </div>
+            <br/><br/><br/>
+            <div id="kickBanPeopleFun"></div>
+         </div>
+
+         <div id="right_div">
+            <div id="chatrooms_my"></div>
+            <br/><br/><br/>
+            <div id="banMessage">
+               <button id="banMessage_btn" onclick="banMsg()">Ban Message</button>
+            </div>
+         </div>
+
+         <div id="functional_btns">
+            <button id="createRoom_function_btn" onclick="openCreateRoom()">Create Room!</button>
+         </div>
+      </div>
+
+      
+
+      <!-- position: center, after login opacity turn to 0.0; -->
+      <div id="createUser">
+         <h1>Welcome to Chatting Room!</h1>
+         <fieldset>
+            <legend>Type in your nickname:</legend>
+            <input type = "text" id = "username"/>
+            <button onclick="createUser()" id = "createUser_btn" name = "create_user">Go To Chat!</button><br>
+         </fieldset>
+      </div>
+
+      <div id="createRoom">
+         <h1>Create Room!</h1>
+         <fieldset>
+            <legend>Type in the name for chatting room:</legend>
+            <label>Name: </label><br><input type = "text" id = "roomname"/><br>
+            <label>Password:</label><br><input type = "password" id = "password"><br>
+            <p>Tips: Leave password blank for pubilc chat!</p>
+            <button onclick="createRoom()" id = "createRoom_btn" name = "create_room">Create!</button>
+            <button onclick="close_createRoom()" id = "close_createRoom_btn" name = "close_create_room">Close</button>
+         </fieldset>
+      </div>
+
+      <!-- Enter key event listener  -->
+      <script type="text/javascript">
+         document.getElementById("message_input").addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+               document.getElementById("sendMessage").click();
+            }
+         });
+
+      </script>
+   </body>
+</html>

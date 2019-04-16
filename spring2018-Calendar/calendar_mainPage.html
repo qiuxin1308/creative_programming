@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My Calendar</title>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="calendarStyle.css">
+</head>
+<body>
+	<!-- show current month, year and current user -->
+	<div class="month">
+		<ul>
+			<!-- prev month button -->
+			<li class="prev">
+				<button id="prev_month_btn" type="button" value="prevBtn">&#10094;</button>
+			</li>
+			<li class="next">
+				<button id="next_month_btn" type="button" value="nextBtn">&#10095;</button>
+			</li>
+			<li id="showCurrentMonth"></li>
+			<li><br></li>
+			<li id="showCurrentYear"></li>
+			<li><br></li>
+			<li id="displayUsername"></li>
+		</ul>
+	</div>
+	<!-- show Monday to Sunday -->
+	<ul id="weekdays"></ul>
+	<!-- show days -->
+	<ul id="days"></ul>
+	<!-- show buttons -->
+	<div class="buttonsStyle">
+		<button type="button" value="loginBtn" id="openLoginBtn">Sign in</button>
+    	<button type="button" value="registerBtn" id="openRegisterBtn">Register</button>
+    	<button type="button" value="logoutBtn" id="openLogoutBtn">Sign out</button>
+    	<button type="button" value="addEventBtn" id="openAddEventBtn">Add Event</button>
+    	<button type="button" value="shareCalendarBtn" id="openShareCalendarBtn">Share</button>
+	</div>
+
+	<!-- register dialog -->
+	<div id="registerForm" title="Register">
+		<form name="register" id="theRegister">
+			<label>UserName: </label><br>
+    		<input type="text" id="register_user" placeholder="Username" /><br><br>
+    		<label>Password: </label><br>
+    		<input type="password" id="register_pwd" placeholder="Password" /><br><br>
+    		<label>What is your favorite color? </label><br>
+    		<input type="text" id="answer1" /><br><br>
+    		<label>What is your pet's name? </label><br>
+    		<input type="text" id="answer2" /><br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_Register" value="Submit"/>
+    		<input type="button" name="closeBtn" id="close_Register" value="Close"/>
+		</form>
+	</div>
+
+	<!-- login dialog -->
+	<div id="loginForm">
+		<form name="login" id="theLogin">
+    		<label>UserName: </label><br>
+    		<input type="text" id="login_user" placeholder="Username"/><br><br>
+    		<label>Password: </label><br>
+    		<input type="password" id="login_pwd" placeholder="Password"/><br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_Login" value="Submit"/>
+    		<input type="button" name="forgotPwdBtn" id="submit_Forgot" value="Forgot"/>
+    		<input type="button" name="closeBtn" id="close_Login" value="Close"/>
+    	</form>
+	</div>
+
+	<div id="checkValidForm">
+		<form name="checkValid" id="theCheckValid">
+			<label>What is your favorite color? </label><br>
+    		<input type="text" id="a1_check" /><br><br>
+    		<label>What is your pet's name? </label><br>
+    		<input type="text" id="a2_check" /><br><br>
+    		<label>UserName: </label><br>
+    		<input type="text" id="cur_user" placeholder="Username"/><br><br>
+    		<label>New Password: </label><br>
+    		<input type="password" id="new_pwd" placeholder="Password"/><br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_CheckValid" value="Submit"/>
+    		<input type="button" name="closeBtn" id="close_CheckValid" value="Close" />
+		</form>
+	</div>
+
+	<!-- add Event dialog -->
+	<div id="addEventForm">
+    	<form name="addEvent" id="theAddEvent">
+    		<label>Event Name: </label><br>
+    		<input type="text" name="eventName" id="eventName" /><br><br>
+    		<label>Event Content: </label><br>
+    		<textarea name="eventContent" id="eventContent"></textarea><br><br>
+    		<label>Date: </label><br>
+    		<input type="Date" name="eventDate" id="eventDate" /><br><br>
+    		<label>Time: </label><br>
+    		<input type="Time" name="eventTime" id="eventTime" /><br><br>
+    		<label>Group Event: </label><br>
+    		<input type="radio" name="is_group" id="yes_group" value="Yes" />Yes
+    		<input type="radio" name="is_group" id="no_group" value="No" />No<br><br>
+    		<label>Category: </label><br>
+    		<input type="radio" name="category" id="ca_emergency" value="Emergency" />Emergency
+    		<input type="radio" name="category" id="ca_normal" value="Normal" />Normal<br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_AddEvent" value="Submit"/>
+    		<input type="button" name="closeBtn" id="close_AddEvent" value="Close" />
+    	</form>
+    </div>
+
+    <div id="displayEventsForm">
+    	<form name="displayEvents" id="displayEvents"></form>
+    </div>
+    <div id="editEventForm">
+    	<form name="editEvent" id="theEditEvent"></form>
+    </div>
+
+   	<div id="shareEventForm">
+   		<form name="share" id="shareEvent">
+    		<label>Share this event to other user:</label><br><br>
+    		<input type="text" id="share_user" placeholder="enter username" /><br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_share" value="Submit"/>
+    		<input type="button" name="closeBtn" id="close_share" value="Close"/>
+    	</form>
+   	</div>
+   	<div id="shareCalendarForm">
+   		<form name="shareCalendar" id="shareCalendar">
+    		<label>Share calendar to:</label><br><br>
+    		<input type="text" id="share_calendarUser" placeholder="enter username" /><br><br>
+    		<p></p>
+    		<input type="button" name="submitBtn" id="submit_shareCalendar" value="Submit"/>
+    		<input type="button" name="closeBtn" id="close_shareCalendar" value="Close"/>
+    	</form>
+   	</div>
+	<script>
+		$(function(){
+			//hide div dialogs
+			$("#registerForm").hide();
+			$("#loginForm").hide();
+			$("#addEventForm").hide();
+			$("#displayEventsForm").hide();
+			$("#editEventForm").hide();
+			$("#shareEventForm").hide();
+			$("#shareCalendarForm").hide();
+			$("#checkValidForm").hide();
+
+
+			//hide two buttons
+			$("#openLogoutBtn").hide();
+			$("#openAddEventBtn").hide();
+			$("#openShareCalendarBtn").hide();
+		});
+
+	</script>
+	<!-- <script type="text/javascript" src="shareAllEvent.js"></script> -->
+
+    <script>
+		function openRegister() {
+			
+			document.getElementById("registerForm").style.display = ""; 
+			document.getElementById("register_user").value = "";
+			document.getElementById("register_pwd").value = "";
+			document.getElementById("answer1").value = "";
+			document.getElementById("answer2").value = "";
+		}
+		function closeRegister() {
+			document.getElementById("registerForm").style.display = "none"; //hide register form
+			document.getElementById("register_user").value = "";
+			document.getElementById("register_pwd").value = "";
+			document.getElementById("answer1").value = "";
+			document.getElementById("answer2").value = "";
+		}
+		function openLogin() {
+			document.getElementById("loginForm").style.display = ""; //display login/sign in form
+			document.getElementById("login_user").value = "";
+			document.getElementById("login_pwd").value = "";
+		}
+		function closeLogin() {
+			document.getElementById("loginForm").style.display = "none";
+			document.getElementById("login_user").value = "";
+			document.getElementById("login_pwd").value = "";
+		}
+		function openAddEvent() {
+			document.getElementById("addEventForm").style.display = "";
+			document.getElementById("eventName").value = "";
+			document.getElementById("eventContent").value = "";
+			document.getElementById("eventDate").value = "";
+			document.getElementById("eventTime").value = "";
+			document.getElementById("yes_group").checked = "";
+			document.getElementById("no_group").checked = "";
+			document.getElementById("ca_emergency").checked = "";
+			document.getElementById("ca_normal").checked = "";
+		}
+		function openCheckValid() {
+			$("#loginForm").hide();
+			document.getElementById("checkValidForm").style.display = "";
+			document.getElementById("a1_check").value = "";
+			document.getElementById("a2_check").value = "";
+			document.getElementById("cur_user").value = "";
+			document.getElementById("new_pwd").value = "";
+		}
+		function closeAddEvent() {
+			document.getElementById("addEventForm").style.display = "none";
+			document.getElementById("eventName").value = "";
+			document.getElementById("eventContent").value = "";
+			document.getElementById("eventDate").value = "";
+			document.getElementById("eventTime").value = "";
+			document.getElementById("yes_group").checked = "";
+			document.getElementById("no_group").checked = "";
+			document.getElementById("ca_emergency").checked = "";
+			document.getElementById("ca_normal").checked = "";
+		}
+		function closeDisplayEvent() {
+			document.getElementById("displayEventsForm").style.display = "none";
+		}
+		function closeDisplayEditedEvent() {
+			document.getElementById("editEventForm").style.display = "none";
+			document.getElementById("theEditEvent").innerHTML = "";
+		}
+		function closeShare() {
+			document.getElementById("shareEventForm").style.display = "none";
+			document.getElementById("displayEventsForm").style.display = "";
+		}
+		function openShareCalendar() {
+			document.getElementById("shareCalendarForm").style.display = "";
+			document.getElementById("share_calendarUser").value = "";
+		}
+		function closeShareCalendar() {
+			document.getElementById("shareCalendarForm").style.display = "none";
+			document.getElementById("share_calendarUser").value = "";
+		}
+		function closeCheckValid() {
+			$("#loginForm").show();
+			document.getElementById("checkValidForm").style.display = "none";
+			document.getElementById("a1_check").value = "";
+			document.getElementById("a2_check").value = "";
+			document.getElementById("cur_user").value = "";
+			document.getElementById("new_pwd").value = "";
+		}
+		document.getElementById("openLoginBtn").addEventListener("click",openLogin,false);
+		document.getElementById("openRegisterBtn").addEventListener("click",openRegister,false);
+		document.getElementById("openAddEventBtn").addEventListener("click",openAddEvent,false);
+		document.getElementById("openShareCalendarBtn").addEventListener("click",openShareCalendar,false);
+		document.getElementById("close_Register").addEventListener("click",closeRegister,false);
+		document.getElementById("close_Login").addEventListener("click",closeLogin,false);
+		document.getElementById("close_AddEvent").addEventListener("click",closeAddEvent,false);
+		document.getElementById("close_share").addEventListener("click",closeShare,false);
+		document.getElementById("close_shareCalendar").addEventListener("click",closeShareCalendar,false);
+	</script>
+	<script src="calendar.min.js"></script>
+	<script src="showCalendar.js">
+		var token = "";
+	</script>
+	<script src="loginAjaxFun.js"></script>
+	<script src="registerAjaxFun.js"></script>
+	<script src="logoutAjaxFun.js"></script>
+	<script src="addEventAjaxFun.js"></script>
+	<script src="shareEvent.js"></script>
+	<script src="shareCalendarAjaxFun.js"></script>
+	<script src="forgotPwdAjaxFun.js"></script>
+</body>
+</html>
